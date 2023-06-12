@@ -8,14 +8,6 @@
 * RabbitMQ vm: rmq01
 * Memcache vm: mc01
 * DB vm: db01
-
-## Stack validation
-
-[screen-capture (11).webm](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/91822df5-96fa-4db0-92eb-7a92780671ec)
-
-
-## Setup
-
 ```
 vagrant ssh web01
 cat /etc/hosts
@@ -31,9 +23,6 @@ ping rmq01
 ping db01
 logout
 ```
-
-
-
 # BACKEND SETUP
 
 ## 1- DB setup
@@ -42,7 +31,7 @@ logout
 vagrant ssh db01
 sudo -i
 yum update -y
-echo "DB_PSW='psw123'" >> /etc/profile
+echo "DATABASE_PASS='admin123'" >> /etc/profile
 source /etc/profile
 yum install epel-release -y
 yum install git mariadb-server -y
@@ -51,22 +40,22 @@ systemctl start mariadb
 systemctl enable mariadb
 mysql_secure_installation
 # Set the variable password here
-mysql -u root -ppsw123
+mysql -u root -padmin123
 # or mysql -u root -p
 
 mysql --version
 
 git clone -b local-setup https://github.com/devopshydclub/vprofile-project.git
 cd vprofile-project
-mysql -u root -p"$DB_PSW" -e "create database accounts"
-mysql -u root -p"$DB_PSW" -e "grant all privileges on accounts.* TO 'admin'@'app01' identified by 'psw123' "
+mysql -u root -p"$DATABASE_PASS" -e "create database accounts"
+mysql -u root -p"$DATABASE_PASS" -e "grant all privileges on accounts.* TO 'admin'@'app01' identified by 'admin123' "
 
 
 
 
-mysql -u root -ppsw123 accounts < src/main/resources/db_backup.sql
-mysql -u root -ppsw123 -e "FLUSH PRIVILEGES"
-mysql -u root -p"$DB_PSW"
+mysql -u root -padmin123 accounts < src/main/resources/db_backup.sql
+mysql -u root -padmin123 -e "FLUSH PRIVILEGES"
+mysql -u root -p"$DATABASE_PASS"
 show databases;
 use accounts;
 show tables;
@@ -132,8 +121,8 @@ systemctl status rabbitmq-server
 
 Config Change
 sh -c 'echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config'
-rabbitmqctl add_user rabbit psw123
-rabbitmqctl set_user_tags rabbit administrator
+rabbitmqctl add_user test admin123
+rabbitmqctl set_user_tags test administrator
 
 
 systemctl restart rabbitmq-server
@@ -267,14 +256,4 @@ systemctl restart nginx
 
 ![image](https://user-images.githubusercontent.com/96833570/211108308-f3d76c04-d290-471b-aa34-9ef7ea57d666.png)
 
-## Verifying the stack
-
-![image](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/d8e33671-48e8-45c1-b23b-faa79556c0c4)
-
-
-## Deleting the stack
-
-`vagrant destroy`
-
-![image](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/6eddbb32-3d7e-4e91-9bb2-b46bf13b488e)
-
+git 
