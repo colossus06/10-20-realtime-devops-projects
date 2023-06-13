@@ -124,6 +124,7 @@ rm -rf ROOT
 aws s3 ls
 aws s3 mb s3://vprofile-artifact-storage-devops
 aws s3 cp ./target/vprofile-v2.war s3://vprofile-artifact-storage-devops/vprofile-v2.war
+
 aws s3 cp s3://vprofile-artifact-storage-devops/vprofile-v2.war /tmp/vprofile-v2.war
 
 sudo -i
@@ -139,13 +140,17 @@ cd ROOT
 cd /var/lib/tomcat9/webapps/ROOT/WEB-INF/classes
 cat application.properties
 telnet db01.devops.devtechops.dev 3306
+
+telnet rmq01.devops.devtechops.dev 5672
+telnet mq01.devops.devtechops.dev 11211
+
 ```
 
 We can check db connection via telnet:
 
-![image](https://user-images.githubusercontent.com/96833570/211215351-c9110bb4-222a-4652-9bce-7c0b21faf313.png)
 
 
+![](20230613170115.png)
 
 
 <hr>
@@ -155,16 +160,20 @@ We can check db connection via telnet:
 ![image](https://user-images.githubusercontent.com/96833570/211546007-e20a6c56-4d28-4644-86ca-cf83908e3acd.png)
 
 
+## Auto-scaling and launch templates
+
+![](20230613200117.png)
+
+![](20230613203456.png)
+
+![](20230613203750.png)
+
+![](20230613204947.png)
 
 
 ## Validation
 
 
-
-
-
-
-https://user-images.githubusercontent.com/96833570/211554501-9cd28d3a-7cd1-4161-bd08-90f5e8954534.mp4
 
 
 
