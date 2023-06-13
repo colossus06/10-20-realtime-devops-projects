@@ -1,6 +1,8 @@
 # Devops-Projects-3-AWS-Lift-and-Shift
 
 
+
+
 ![image](https://user-images.githubusercontent.com/96833570/211544752-3a0a22db-c310-42ec-8e87-a627181fdc04.png)
 
 
@@ -12,26 +14,43 @@
 ![image](https://user-images.githubusercontent.com/96833570/211214592-65776762-545c-47de-a8b9-b8a505beacc1.png)
 
 
+## SG backend
 
-![image](https://user-images.githubusercontent.com/96833570/211188366-037f728d-9edb-4352-95ef-22d3ed09c93d.png)
+![](20230613092855.png)
 
 
+### Db Setup - 3306
 
-### Db Setup
+```sh
+ssh -i ../../Downloads/vprofile-kp.pem centos@13.48.194.215
+sudo -i
+```
+### displaying user-data script
 
 `cat /var/lib/cloud/instances/${instance-id}/user-data.txt`
 
-![image](https://user-images.githubusercontent.com/96833570/211167718-987c7ea0-0b39-4009-9830-439de8aac1dc.png)
+
+`systemctl status mariadb`
+
+![](20230613095535.png)
+
+![](20230613095740.png)
+
+### Memcached setup - 11211
 
 
-### Memcached setup
-
+```
+systemctl status memcached
+ssh -i ../../Downloads/vprofile-kp.pem centos@16.171.1.184
+curl http://169.254.169.254/latest/user-data
+ss -tunlp | grep 11211
+```
 
 ![image](https://user-images.githubusercontent.com/96833570/211188094-a2d20862-bccd-4cbc-8474-a24102662e10.png)
 
 ![image](https://user-images.githubusercontent.com/96833570/211188244-843bc717-798e-47ce-880f-7bf39abe696a.png)
 
-### Rabbitmq setup
+### Rabbitmq setup - 5672
 
 ![image](https://user-images.githubusercontent.com/96833570/211188312-82b811fa-29fe-4193-a2f4-32901962249c.png)
 
@@ -59,13 +78,8 @@ Now build the artifact locally and store it in S3 bucket. Then we will download 
 
 ### Configuring aws cli/iam user with full s3 access
 
-Credentials are important. 
-I deleted these users and creds after completion of these projects. 
-Please don't expose your credentials on your repos or anywhere public. 
-
 
 ![image](https://user-images.githubusercontent.com/96833570/211206531-684484ef-914e-4329-b903-4f8683c4a961.png)
-
 
 
 `mvn install`
@@ -108,12 +122,23 @@ systemctl stop tomcat
 cd /var/lib/tomcat8/webapps/
 rm -rf ROOT
 aws s3 ls
-aws s3 cp s3://devops-projects-artifact-st/devops-project.war /tmp/
-cd /tmp/
-cp devops-project.war /var/lib/tomcat8/webapps/ROOT.war
-systemctl start tomcat8
-cd /var/lib/tomcat8/webapps/ROOT/WEB-INF/classes
+aws s3 mb s3://vprofile-artifact-storage-devops
+aws s3 cp ./target/vprofile-v2.war s3://vprofile-artifact-storage-devops/vprofile-v2.war
+aws s3 cp s3://vprofile-artifact-storage-devops/vprofile-v2.war /tmp/vprofile-v2.war
+
+sudo -i
+systemctl stop tomcat9
+cd /var/lib/tomcat9/webapps
+rm -rf ROOT
+
+
+cp /tmp/vprofile-v2.war ./ROOT.war
+systemctl start tomcat9
+
+cd ROOT
+cd /var/lib/tomcat9/webapps/ROOT/WEB-INF/classes
 cat application.properties
+telnet db01.devops.devtechops.dev 3306
 ```
 
 We can check db connection via telnet:
