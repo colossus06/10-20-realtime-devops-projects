@@ -89,7 +89,7 @@ Let's create a bucket and copy our artifact:
 
 ```
 aws s3 mb s3://devops-projects-artifact-st
-aws s3 cp vprofile-v2.war s3://devops-projects-artifact-st/vprofile-v2.war
+aws s3 cp vprofile-v2.war s3://vprofile-artifact-storage-devops/vprofile-v2.war
 
 ```
 

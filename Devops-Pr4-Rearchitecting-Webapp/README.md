@@ -76,7 +76,7 @@ I added the endpoints accordingly and run  `mvn install`
 
 ![image](https://user-images.githubusercontent.com/96833570/211925112-002b8d5b-8981-45dc-9324-080478dc0134.png)
 
-![image](https://user-images.githubusercontent.com/96833570/211925550-b98dc885-d5b3-4d08-881c-a8f35463a514.png)
+![](20230614140502.png)
 
 
 ## Adding cname entries pointing to the beanstalk endpoint
