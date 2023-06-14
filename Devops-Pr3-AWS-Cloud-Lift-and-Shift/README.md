@@ -179,3 +179,4 @@ We can check db connection via telnet:
 
 
 
+![](20230613205644.png)
