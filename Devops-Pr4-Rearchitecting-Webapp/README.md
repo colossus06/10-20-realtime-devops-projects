@@ -96,8 +96,10 @@ I updated the dns entry and waited for some time for my ISP to cache the request
 ## Validation
 
 
-https://user-images.githubusercontent.com/96833570/212174567-75ca3b94-78e2-4d81-b10c-e238addae067.mp4
+[pr4-validation.webm](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/ee1e84d1-5152-4141-a2b6-9ecd5dedd549)
 
+
+[pr4-dnsvalidation.webm](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/b9bcf027-c9ff-408c-8f55-6bd573fb7f04)
 
 
 ### CDN
