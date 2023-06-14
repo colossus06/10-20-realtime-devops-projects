@@ -174,6 +174,7 @@ We can check db connection via telnet:
 ## Validation
 
 
+[pr3-validation.webm](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/00ec5bdf-4704-483e-925d-21823b535829)
 
 
 
