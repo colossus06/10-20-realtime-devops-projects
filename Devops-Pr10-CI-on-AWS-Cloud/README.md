@@ -1,5 +1,9 @@
 ## Continious Integration on AWS Cloud
 
+
+![](20230615113159.png)
+
+
 ### Code Commit
 
 ```sh
@@ -27,4 +31,29 @@ git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/repo
 
 ![](20230614164212.png)
 
-## Code Artifact
+
+
+
+## Code Build
+
+
+![](20230615024811.png)
+
+Sonar scanning analysis report:
+
+![](20230615024516.png)
+
+
+
+## CI Validation
+
+
+Aws cloud based CI solutions:
+
+![](20230615113430.png)
+
+
+![](20230615113444.png)
+
+
+![](20230615113548.png)
