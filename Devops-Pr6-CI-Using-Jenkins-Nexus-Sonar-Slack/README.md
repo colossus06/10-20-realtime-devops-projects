@@ -3,6 +3,9 @@
 
 ![](20230617012759.png)
 
+![image](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/c29cdce4-3612-414a-b68c-bd2f20156480)
+
+
 Install tools:
 
 * maven integration
@@ -99,3 +102,4 @@ Add a webhook in github settings:
 
 ## Validation
 
+[pr6-validation.webm](https://github.com/colossus06/20-realtime-devops-projects/assets/96833570/5fc56603-81bb-4fd3-90e5-d6a0ab6af0fc)
