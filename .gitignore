@@ -9,6 +9,8 @@
 *.nar
 hs_err_pid*
 
+
+
 ##############################
 ## Maven
 ##############################
@@ -83,7 +85,8 @@ nb-configuration.xml
 ##############################
 .DS_Store
 
-Devops-Pr5-Jenkins-Pipeline-as-a-Code/jenkins.sh
-Devops-Pr7-CI-on-AWS-Cloud/aws-files/ssh_config_file
-Devops-Pr9-CD-Java-Webapp-AWS-Cloud/aws-files/ssh_config_file
+5-Devops-Pr-Jenkins-Pipeline-as-a-Code/jenkins.sh
+7-Devops-Pr-CI-on-AWS-Cloud/aws-files/ssh_config_file
+9-Devops-Pr-CD-Java-Webapp-AWS-Cloud/aws-files/ssh_config_file
 test.yml
+.gitignore
