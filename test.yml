@@ -1,0 +1,18 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: create a new ec2 key pair, returns generated private key
+      ec2_key:
+        name: my_keypair
+      register: keyout
+
+    - debug:
+        var: keyout
+    - name: store login priv key
+      copy:
+        content: "{{ keyout.key.private_key }}"
+        dest: ./mykey.pem
+      when: keyout.changed
+
+  ansible-playbook t.yml
