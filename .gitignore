@@ -86,3 +86,4 @@ nb-configuration.xml
 Devops-Pr5-Jenkins-Pipeline-as-a-Code/jenkins.sh
 Devops-Pr7-CI-on-AWS-Cloud/aws-files/ssh_config_file
 Devops-Pr9-CD-Java-Webapp-AWS-Cloud/aws-files/ssh_config_file
+test.yml
