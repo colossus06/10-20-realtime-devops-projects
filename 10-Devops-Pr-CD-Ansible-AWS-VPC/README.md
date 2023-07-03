@@ -119,3 +119,4 @@ I forgot to add 1 host block /32. Relace the ip such as the following: `your-pub
 
 
 ![ansible-vpc-bastion-devops](https://user-images.githubusercontent.com/96833570/219875554-f2e0502a-17fe-4197-8513-0596495bdc9e.gif)
+

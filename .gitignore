@@ -90,3 +90,7 @@ nb-configuration.xml
 9-Devops-Pr-CD-Java-Webapp-AWS-Cloud/aws-files/ssh_config_file
 test.yml
 .gitignore
+18-Devops-Pr-Cloudformation/README.md
+18-Devops-Pr-Cloudformation/codepipeline-template.yaml
+general.md
+11-Ansible-for-Complete-Stack-Setup/provision-stack/ansible.log
