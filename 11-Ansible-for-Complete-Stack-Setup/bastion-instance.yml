@@ -11,7 +11,7 @@
       include_vars: vars/vpc-output_vars
 
     - name: Create vprofile ec2 key
-      ec2_key:
+      amazon.aws.ec2_key:
         name: vprofile-key
         region: "{{region}}"
       register: key_out
@@ -24,8 +24,8 @@
         mode: 0600
       when: key_out.changed
 
-    - name: Create Sec Grp for bastion host
-      ec2_group:
+    - name: Create Security Grp for bastion host
+      amazon.aws.ec2_security_group:
         name: Bastion-host-sg
         description: Allow port 22 from everywhere and all port within sg
         region: "{{region}}"
@@ -38,7 +38,7 @@
       register: BastionSG_out
 
     - name: Creating Bastion Host
-      ec2_instance:
+      amazon.aws.ec2_instance:
         key_name: vprofile-key
         region: "{{region}}"
         instance_type: t2.micro
@@ -50,7 +50,7 @@
           Project: Vprofile
           Owner: DevOps Team
         exact_count: 1
-        count_tag:
+        tags:
           Name: "Bastion_host"
           Project: Vprofile
           Owner: DevOps Team

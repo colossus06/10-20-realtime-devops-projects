@@ -6,7 +6,7 @@
       include_vars: vars/vpc_setup
 
     - name: Create vprofile VPC
-      ec2_vpc_net:
+      amazon.aws.ec2_vpc_net:
         name: "{{vpc_name}}"
         cidr_block: "{{vpcCidr}}"
         region: "{{region}}"
@@ -20,7 +20,7 @@
   #      var: vpcout
 
     - name: create Public Subnet 1 in Zone1
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{ region }}"
         az: "{{ zone1 }}"
@@ -32,7 +32,7 @@
       register: pubsub1_out
 
     - name: create Public subnet 2 in zone2
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone2 }}"
@@ -43,20 +43,9 @@
           Name: vprofile_pubsub2
       register: pubsub2_out
 
-    - name: create Public subnet 3 in zone3
-      ec2_vpc_subnet:
-        vpc_id: "{{ vpcout.vpc.id }}"
-        region: "{{ region }}"
-        az: "{{ zone3 }}"
-        state: "{{state}}"
-        cidr: "{{ PubSub3Cidr }}"
-        map_public: yes
-        resource_tags:
-          Name: vprofile_pubsub3
-      register: pubsub3_out
 
     - name: create Private Subnet 1 in Zone1
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone1 }}"
@@ -67,7 +56,7 @@
       register: privsub1_out
 
     - name: create Private subnet 2 in zone2
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone2 }}"
@@ -76,19 +65,6 @@
         resource_tags:
           Name: vprofile_privsub2
       register: privsub2_out
-
-
-
-    - name: create Private subnet 3 in zone3
-      ec2_vpc_subnet:
-        vpc_id: "{{ vpcout.vpc.id }}"
-        region: "{{ region }}"
-        az: "{{ zone3 }}"
-        state: "{{state}}"
-        cidr: "{{ PrivSub3Cidr }}"
-        resource_tags:
-          Name: vprofile_privsub3
-      register: privsub3_out
 
     - name: Internet Gateway Setup
       ec2_vpc_igw:
@@ -100,7 +76,7 @@
       register: igw_out
 
     - name: Set up public subnet route table
-      ec2_vpc_route_table:
+      amazon.aws.ec2_vpc_route_table:
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{ region }}"
         tags:
@@ -115,7 +91,7 @@
       register: pubRT_out
 
     - name: Create new nat gateway and allocate new EIP if a nat gateway does not yet exist in the subnet.
-      ec2_vpc_nat_gateway:
+      amazon.aws.ec2_vpc_nat_gateway:
         state: "{{state}}"
         subnet_id: "{{ pubsub1_out.subnet.id }}"
         wait: yes
@@ -124,7 +100,7 @@
       register: NATGW_out
 
     - name: Set up Private subnet route table
-      ec2_vpc_route_table:
+      amazon.aws.ec2_vpc_route_table:
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{ region }}"
         tags:
