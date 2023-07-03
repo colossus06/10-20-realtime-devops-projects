@@ -1,6 +1,7 @@
-nginx_ami: ami-07efac79022b86107
-tomcat_ami: ami-07efac79022b86107
-memcache_ami: ami-07efac79022b86107
-rmq_ami: ami-07efac79022b86107
-mysql_ami: ami-07efac79022b86107
+my_ami : ami-07efac79022b86107
+nginx_ami: "{{ my_ami }}"
+tomcat_ami: "{{ my_ami }}"
+memcache_ami: "{{ my_ami }}"
+rmq_ami: "{{ my_ami }}"
+mysql_ami: "{{ my_ami }}"
 
