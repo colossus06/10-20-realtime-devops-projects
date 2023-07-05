@@ -5,7 +5,7 @@ RUN cd vprofile-project && git checkout docker && mvn install -X
 
 FROM tomcat:9-jre11
 RUN rm -rf /usr/local/tomcat/webapps/*
-COPY --from=BUILD_IMAGE 20-realtime-devops-projects/13-Containerization-of-Java-Project-using-Docker/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=BUILD_IMAGE vprofile-project/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
