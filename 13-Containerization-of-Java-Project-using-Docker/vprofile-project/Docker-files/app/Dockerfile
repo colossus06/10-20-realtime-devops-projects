@@ -1,7 +1,7 @@
 FROM openjdk:11 AS BUILD_IMAGE
 RUN apt update && apt install maven -y
 RUN git clone https://github.com/colossus06/20-realtime-devops-projects.git
-RUN cd 20-realtime-devops-projects && cd 13-Containerization-of-Java-Project-using-Docker && mvn install
+RUN cd 20-realtime-devops-projects/13-Containerization-of-Java-Project-using-Docker && mvn install
 
 
 
