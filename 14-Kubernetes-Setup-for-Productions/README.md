@@ -1,5 +1,10 @@
 # 16-Kubernetes-Setup-for-productions
 
+![](20230706181825.png)
+
+
+For kubeadm installation using containerd on EC2 take a look at  `kubeadm-2023`.
+
 ## Minikube environment for testing
 
 ```

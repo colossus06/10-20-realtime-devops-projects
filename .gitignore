@@ -94,3 +94,7 @@ test.yml
 18-Devops-Pr-Cloudformation/codepipeline-template.yaml
 general.md
 11-Ansible-for-Complete-Stack-Setup/provision-stack/ansible.log
+test.py
+
+
+21-aws-terraform/**/*
