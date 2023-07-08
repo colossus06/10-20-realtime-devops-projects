@@ -98,3 +98,8 @@ test.py
 
 
 21-aws-terraform/**/*
+scripts-notes/**/*
+14-Kubernetes-Setup-for-Productions/eks/variables.tf
+14-Kubernetes-Setup-for-Productions/eks/eksctlkp.pem
+delete_unused_security_groups.py
+14-Kubernetes-Setup-for-Productions/eks/.terraform.lock.hcl
